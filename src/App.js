@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
+import Courselist from './TvSeriesList';
+import Card from './Card';
+import AddCourse from './AddTvseries';
+import Addtopic from './AddGenre';
+import NavBar from './Navbar';
+import Footer from './Footer';
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={Courselist} />
+        <Route exact path="/card" component={Card} />
+        <Route exact path="/course" component={AddCourse} />
+        <Route exact path="/topic" component={Addtopic} />
+        <Redirect to = "/"></Redirect>
+      </Switch>
+      <Footer />
+    </>
+    
   );
 }
 
